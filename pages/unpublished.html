@@ -1,0 +1,50 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<html>
+<head>
+    <title>CA Court Unpublished Opinions</title>
+    {% include "styles.html" %}
+    <style>
+        blockquote { font-size: 16px; }
+        p { font-size: 16px; }
+    </style>
+</head>
+<body>
+    <div style="padding: 25px 25px 25px 25px;">
+        <p>
+            These opinions come from the California Court at
+            <a href="https://www.courts.ca.gov/cms/npopinions.htm?Courts=Y">https://www.courts.ca.gov/cms/npopinions.htm?Courts=Y</a>.
+        </p>
+        <p>
+            The court explains:
+        </p>
+        <blockquote>
+            <p>
+            Unpublished opinions from the last 60 days are posted together on
+            this page as public information about actions taken by the Courts
+            of Appeal.
+            <br/><br>
+            After 60 days, these opinions remain available via our Case
+            Information Search.
+            </p>
+        </blockquote>
+        <p>
+            This seems to me to be an unnecessary inconvenience being introduced
+            by the Court for no valid reason. So here you will find opinions older
+            than the 60 days provided by the Court.
+        </p>
+        <table class="table">
+            <tbody>
+            {% for opinion in unpublished %}
+            <tr>
+                <td>
+                    <a href="pub_date/{{ opinion.pub_date }}">
+                        {{ opinion.pub_date }}
+                    </a>
+                    - {{ opinion.pub_date_count }}
+                </td>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body></html>

@@ -1,0 +1,31 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<html>
+<head>
+    <title>CA Court Unpublished Opinions</title>
+    {% include "styles.html" %}
+</head>
+<body>
+<div style="padding: 25px 25px 25px 25px;">
+<table class="table">
+    <tbody>
+    {% for opinion in opinions %}
+    <tr>
+        <td>
+            {{ opinion.filed_date }}
+        </td>
+        <td>
+            {{ opinion.docket_num }}
+        </td>
+        <td>
+            <a href="{{ opinion.details_link }}" target="blank">details</a>
+            <br/>
+            <a href="{{ opinion.pdf_link }}" target="blank">pdf</a><br/>
+        </td>
+        <td>
+            {{ opinion.short_name }}
+        </td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table></div>
+</body></html>
