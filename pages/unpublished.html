@@ -32,19 +32,10 @@
             by the Court for no valid reason. So here you will find opinions older
             than the 60 days provided by the Court.
         </p>
-        <table class="table">
-            <tbody>
-            {% for opinion in unpublished %}
-            <tr>
-                <td>
-                    <a href="pub_date/{{ opinion.pub_date }}">
-                        {{ opinion.pub_date }}
-                    </a>
-                    - {{ opinion.pub_date_count }}
-                </td>
-            </tr>
-            {% endfor %}
-            </tbody>
-        </table>
+        {% for month_key in month_keys %}
+        <p style="font-family: monospace;">
+            {{ cals[month_key] }}
+        </p>
+        {% endfor %}
     </div>
 </body></html>
