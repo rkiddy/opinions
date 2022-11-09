@@ -121,7 +121,7 @@ def build(param, extra_param=None):
         """
         rows = conn.execute(sql).fetchall()
         months = [r[0] for r in rows]
-        print(f"months: {months}")
+        # print(f"months: {months}")
 
         sql = """
         select filed_date, count(0) as count from opinions
@@ -137,15 +137,15 @@ def build(param, extra_param=None):
             if month not in counts:
                 counts[month] = dict()
             counts[month][date] = row['count']
-        print(f"counts: {counts}")
+        # print(f"counts: {counts}")
 
         cals = dict()
         for month in months:
             cals[month] = calendar_as_strs(month)
-        print(f"cals: {cals}")
+        # print(f"cals: {cals}")
 
         next_cals = cal_strs_to_months(cals, counts)
-        print(f"next_cals: {next_cals}")
+        # print(f"next_cals: {next_cals}")
 
         month_keys = sorted(list(next_cals.keys()))
         month_keys.reverse()
