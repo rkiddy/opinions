@@ -1,11 +1,13 @@
 
-import re
-from flask import request, url_for
-from sqlalchemy import create_engine, inspect
-import subprocess
 import calendar
+import re
 
-engine = create_engine('mysql+pymysql://ray:ZEKRET_WORD@localhost/ca_courts')
+from dotenv import dotenv_values
+from sqlalchemy import create_engine, inspect
+
+cfg = dotenv_values(".env")
+
+engine = create_engine(f"mysql+pymysql://{cfg['USR']}:{cfg['PWD']}@{cfg['HOST']}/{cfg['DB']}")
 conn = engine.connect()
 inspector = inspect(engine)
 
@@ -70,13 +72,13 @@ def cal_strs_to_months(cal_strs, counts):
                 if re.match(r' [0-9]', day):
                     day_num = '0' + day[1]
                     if day_num in counts[month]:
-                        next_week.append(f"<a href=\"/pub_date/{month}-{day_num}\">" + day + "</a>")
+                        next_week.append(f"<a href=\"/opinions/pub_date/{month}-{day_num}\">" + day + "</a>")
                     else:
                         next_week.append(f"&nbsp;{day[1]}")
 
                 if not re.match(r' [0-9 ]', day):
                     if day in counts[month]:
-                        next_week.append(f"<a href=\"/pub_date/{month}-{day}\">" + day + "</a>")
+                        next_week.append(f"<a href=\"/opinions/pub_date/{month}-{day}\">" + day + "</a>")
                     else:
                         next_week.append(day)
 

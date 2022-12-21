@@ -13,8 +13,6 @@ from bs4 import BeautifulSoup
 # i-frame inside the page:
 primary_url = 'https://www.courts.ca.gov/cms/npopinions.htm?Courts=Y'
 
-#primary_url = 'http://localhost/court.html'
-
 url_head = 'https://www.courts.ca.gov'
 
 mydb = mysql.connector.connect(
