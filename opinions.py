@@ -4,14 +4,16 @@ from dotenv import dotenv_values
 from flask import Flask
 from jinja2 import Environment, PackageLoader
 
-sys.path.append("/home/ray/opinions/")
 import data
+
+sys.path.append("/home/ray/opinions/")
 
 opinions = Flask(__name__)
 application = opinions
-env = Environment(loader=PackageLoader('opinions', 'pages'))
+env = Environment(loader=PackageLoader('opinions'))
 
 cfg = dotenv_values(".env")
+
 
 @opinions.route(f"/{cfg['WWW']}")
 @opinions.route(f"/{cfg['WWW']}/")
